@@ -119,7 +119,7 @@
               </tr>
         </thead>
         <tbody>
-            <tr *ngFor= 'let employee of employees; let i = index trackBy: trackByFunction'>
+            <tr *ngFor= 'let employee of employees; let i = index; trackBy: trackByFunction'>
                 <!-- <td>{{i}}</td> -->
                 <td>{{employee.empid}}</td>
                 <td>{{employee.empname}}</td>
