@@ -1,0 +1,49 @@
+<div class="attribute"><h2><b>Attribute Directive</b></h2>
+  <!-- Style -->
+  <div class="jumbotron">
+    <h2><u>Style property Example</u></h2>
+    <form>
+      <div><h4><b>Login</b></h4>
+        <p>Username: <input type="text" [(ngModel)]="username" name="username" placeholder="Enter Your Name"></p>
+        <p>Password:  <input type="text" [(ngModel)]="password" name="password" placeholder="Enter Your Password"></p>
+        <input type="submit" class="btn btn-primary" value="Login" (click)="checkLogin()">
+        <br>
+        <div [style.color]='myColor'>{{msg}}</div>
+      </div>
+    </form>
+  </div>
+  <!-- ngStyle -->
+  <!-- 1. set multiple inline styles use ngstyle directive -->
+  <div [ngStyle]="{
+    'background-color' : 'lightyellow',
+    'padding' : '10px',
+    'border' : borderStyle
+  }">
+      <h2><u>ngStyle Example</u></h2>
+      <div style="padding: 1rem" [ngStyle]="alertStyle">Style Me !!!</div>
+      <!-- 2.Object can be the return value of a method -->
+      <button [ngStyle]="setMyStyle()">Button</button>
+  </div>
+  <br>
+  <!-- Class Property -->
+  <div class="jumbotron">
+    <div> <h2><u>Class property Example</u></h2>
+      <!-- css class binding -->
+      <button class="colorClass">Button</button>
+      <br><br>
+      <!-- replace all existing css classes with one or more class -->
+      <button class="colorClass" [class]='classesToApply'>Button</button>
+      <br><br>
+      <!-- add or remove a single css class -->
+      <button class="colorClass" [class.boldClass]='applyBoldClass'>Button</button>
+      <br><br>
+      <button class="colorClass" [class.boldClass]='!applyBoldClass1'>Button</button>
+      <br><br>
+      <button class="colorClass italicClass boldClass" [class.boldClass]='applyBoldClass2'>Button</button>
+    </div>
+  </div>
+  <!--  ngClass -->
+  <div><h2><u>ngClass Example</u></h2>
+    <button class="colorClass" [ngClass]='addClass()'>Button</button>
+  </div>
+</div>

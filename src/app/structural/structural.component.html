@@ -1,0 +1,179 @@
+<div class="attribute">
+  <h2><b>Structural Directive</b></h2>
+
+  <!-- 1. ngIf -->
+
+  <!-- <h1>ngIf</h1> -->
+  <!-- <input type="button" value="Show/Hide Data" (click)='ShowHide()'> -->
+  <!-- <input type="button" value="Show Data" (click)='showData()'> &nbsp;
+  <input type="button" value="Hide Data" (click)='hideData()'>
+  <div *ngIf='b' style="background-color: #33ff66; margin-top: 10px; padding: 5px;">
+    Employee ID: {{empId}}<br>
+    Employee Name: {{empName}}<br>
+    Employee Salary: {{empSal}}
+  </div>
+  <div *ngIf='!b' style="background-color: #00ccff; margin-top: 10px; padding: 5px;">Employee Details Not Available</div> -->
+
+
+  <!-- 1.1. ngIf and else -->
+
+  <!-- <h1>ngIf else</h1>
+  <input type="button" value="Show Data" (click)='showData()'> &nbsp;
+  <input type="button" value="Hide Data" (click)='hideData()'>
+  <div *ngIf='b; then template1; else template2'></div>
+  <ng-template #template1>
+    <div style="background-color: #33ff66">
+      Employee ID: {{empId}}<br>
+      Employee Name: {{empName}}<br>
+      Employee Salary: {{empSal}}
+    </div>
+  </ng-template>
+  <ng-template #template2>
+    <div style="background-color: #00ccff">Employee Details Not Available</div>
+  </ng-template> -->
+
+  <!-- 2. ngSwitch -->
+
+  <!-- <div>
+    <h4>ngSwitch</h4>
+    <select [(ngModel)]='country'>
+      <option>choose any option</option>
+      <option>India</option>
+      <option>UK</option>
+      <option>US</option>
+    </select>
+
+    <div [ngSwitch]='country'>
+      <p *ngSwitchCase="'India'">India details here</p>
+      <p *ngSwitchCase="'UK'">UK details here</p>
+      <p *ngSwitchCase="'US'">US detail here</p>
+      <p *ngSwitchDefault>Please select any country</p>
+    </div>
+  </div> -->
+
+  <!-- 3. ngFor -->
+
+  <!-- <div>
+    <h4>ngFor</h4>
+    <ul>
+      <li *ngFor="let city of cities">{{city}}</li>
+    </ul>
+  </div> -->
+
+
+  <!-- 3.1. ngFor using Object Array -->
+  <!-- <div>
+    <h4>ngFor with Object Array</h4>
+    <table border="1">
+      <tr>
+        <th>Emp ID</th>
+        <th>Emp Name</th>
+        <th>Salary</th>
+      </tr>
+      <tr *ngFor="let employee of employees">
+        <td>{{employee.empid}}</td>
+        <td>{{employee.empname}}</td>
+        <td>{{employee.salary}}</td>
+      </tr>
+    </table>
+  </div> -->
+
+  <!-- 3.2 ngFor using constructor -->
+
+  <!-- <div><b> *ngFor using Constructor</b>
+    <table border="1">
+      <thead>
+          <tr>
+              <th>S.no</th>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Salary</th>
+            </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor= 'let employee of employees; let i = index'>
+              <td>{{i}}</td>
+              <td>{{employee.empid}}</td>
+              <td>{{employee.empname}}</td>
+              <td>{{employee.salary}}</td>
+            </tr>
+            <tr *ngIf= "!employees || employees.length == 0">
+              <td colspan= "5">NO employee detail found</td>
+            </tr>
+      </tbody>
+    </table>
+  </div> -->
+
+
+  <!-- 3.3 ngFor using Add, remove and trackby -->
+
+  <div><b> *ngFor with trackby</b>
+    <table border="1">
+        <thead>
+            <tr>
+                <!-- <th>S.no</th> -->
+                <th>Emp Id</th>
+                <th>Emp gitName</th>
+                <th>Salary</th>
+                <th></th>
+              </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor= 'let employee of employees; let i = index trackBy: trackByFunction'>
+                <!-- <td>{{i}}</td> -->
+                <td>{{employee.empid}}</td>
+                <td>{{employee.empname}}</td>
+                <td>{{employee.salary}}</td>
+                <td><input type="button" value="Delete" (click) = "delEmp(i)"></td>
+              </tr>
+              <tr>
+                <td><input type="text" [(ngModel)] = "newemployee.empid" placeholder = "employee id"></td>
+                <td><input type="text" [(ngModel)] = "newemployee.empname" placeholder = "employee name"></td>
+                <td><input type="text" [(ngModel)] = "newemployee.salary" placeholder = "employee salary"></td>
+                <td><input type="button" value="Insert" (click) = "insertEmp()"></td>
+              </tr>
+              <tr *ngIf= "!employees || employees.length == 0">
+                <td colspan= "5">NO employee detail found</td>
+              </tr>
+        </tbody>
+      </table>
+      <input type="button" value="Refresh Data" (click) = 'refreshData()'>
+    </div>
+
+<!-- 3.4 ngFor with Sorting -->
+
+  <!-- <div>
+    <h4><b> *ngFor Sorting</b></h4>
+    Sort:
+    <select name="sortcol" id="sortcol" [(ngModel)] = "sortcolumn">
+      <option value="empid">Emp id</option>
+      <option value="empname">Emp Name</option>
+      <option value="salary">Salary</option>
+    </select>
+    <select name="order" id="order" [(ngModel)] = "order">
+      <option value="1">Ascending Order</option>
+      <option value="-1">Descending Order</option>
+    </select>
+    <input type="button" value="Sort" (click) = "onSortClick()">
+    <table border="1">
+      <thead>
+          <tr>
+              <th>S.no</th>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Salary</th>
+              <th></th>
+            </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor= 'let employee of employees; let i = index'>
+              <td>{{i}}</td>
+              <td>{{employee.empid}}</td>
+              <td>{{employee.empname}}</td>
+              <td>{{employee.salary}}</td>
+            </tr>
+      </tbody>
+    </table>
+  </div> -->
+
+</div>

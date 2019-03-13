@@ -1,0 +1,14 @@
+.attribute{
+   border: 2px solid green;
+   padding: 10px;
+}
+/* class property */
+ .boldClass {
+    font-weight: bold;
+    }
+    .italicClass {
+    font-style: italic;
+    }
+    .colorClass {
+    color: red;
+    }
